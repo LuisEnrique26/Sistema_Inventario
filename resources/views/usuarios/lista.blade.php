@@ -29,7 +29,6 @@
                                 <tr>
                                     <th scope="col">N°</th>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Email</th>
                                     <th scope="col">Tipo de Usuario</th>
                                     <th scope="col">Funciones</th>
                                 </tr>
@@ -37,19 +36,18 @@
                             <tbody>
                                 @foreach ($usuarios as $usuario)
                                     <tr>
-                                        <th scope="row">{{ $usuario->id_usuario }}</th>
-                                        <td>{{ $usuario->nombre_usuario }}</td>
-                                        <td>{{ $usuario->email }}</td>
+                                        <th scope="row">{{ $usuario->id }}</th>
+                                        <td>{{ $usuario->name }}</td>
                                         <td>{{ $usuario->nombre_tipo_usuario }}</td>
                                         <td>
-                                            <a href="{{ route('mostrarUsuario', ['id' => $usuario->id_usuario]) }}"><button
+                                            <a href="{{ route('mostrarUsuario', ['id' => $usuario->id]) }}"><button
                                                     class="btn btn-info">Detalle</button></a>&nbsp;
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal-{{ $usuario->id_usuario }}">Eliminar</button>
+                                                data-bs-target="#exampleModal-{{ $usuario->id }}">Eliminar</button>
                                         </td>
                                     </tr>
 
-                                    <div class="modal fade" id="exampleModal-{{ $usuario->id_usuario }}" tabindex="-1"
+                                    <div class="modal fade" id="exampleModal-{{ $usuario->id }}" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -61,14 +59,14 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    {{ $usuario->id_usuario }} -
-                                                    {{ $usuario->nombre_usuario }}
+                                                    {{ $usuario->id }} -
+                                                    {{ $usuario->name }}
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Cancelar</button>
                                                     <a
-                                                        href="{{ route('eliminarUsuario', ['id' => $usuario->id_usuario]) }}"><button
+                                                        href="{{ route('eliminarUsuario', ['id' => $usuario->id]) }}"><button
                                                             class="btn btn-danger">Eliminar</button></a>&nbsp;
                                                 </div>
                                             </div>

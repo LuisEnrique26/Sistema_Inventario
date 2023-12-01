@@ -7,7 +7,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
                 <li class="breadcrumb-item">Tablas</li>
-                <li class="breadcrumb-item">Ventas</li>
+                <li class="breadcrumb-item">Ventas</li> 
             </ol>
         </nav>
     </div>
@@ -38,7 +38,7 @@
                                 @foreach ($venta_detalle as $ventaD)
                                     <tr>
                                         <th scope="row">{{ $ventaD->id_venta_detalle }}</th>
-                                        <td>{{ $ventaD->nombre_usuario }}</td>
+                                        <td>{{ $ventaD->name }}</td>
                                         <td>{{ $ventaD->fecha_venta }}</td>
                                         <td>{{ $ventaD->nombre_producto }}</td>
                                         <td>${{ $ventaD->precio_producto * $ventaD->cantidad_venta_detalle }}</td>

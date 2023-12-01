@@ -88,11 +88,6 @@ class EntradaController extends Controller
 
     public function actualizarEntrada(Producto_Proveedor $id, Request $request)
     {
-        // $id_producto = $request -> id_producto;
-        // $query = Productos::find($id_producto);
-        // $query->stock_producto += $request->cantidad;
-        // $query->save();
-
         $fecha = date('Y/m/d H:i:s');
 
 

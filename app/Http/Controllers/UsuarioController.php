@@ -12,19 +12,22 @@ class UsuarioController extends Controller
 {
     public function listaUsuarios()
     {
-        $usuarios = \DB::select('SELECT * FROM usuarios 
-                                 INNER JOIN tipo_usuario ON usuarios.id_tipo_usuario = tipo_usuario.id_tipo_usuario');
-        
+        $usuarios = User::join('tipo_usuario', 'users.id_tipo_usuario', '=', 'tipo_usuario.id_tipo_usuario')
+            ->orderBy('users.id')
+            ->get();
+
         return view('usuarios.lista', compact('usuarios'));
     }
 
     public function mostrarUsuario($id)
     {
-        $usuarios = \DB::select('SELECT * FROM usuarios 
-                            INNER JOIN tipo_usuario ON usuarios.id_tipo_usuario = tipo_usuario.id_tipo_usuario
-                            WHERE usuarios.id_usuario = ?', [$id]);
 
-        return view('usuarios.detalle', compact('usuarios'));
+        $usuario = User::join('tipo_usuario', 'users.id_tipo_usuario', '=', 'tipo_usuario.id_tipo_usuario')
+            ->where('users.id', $id)
+            ->first();
+
+
+        return view('usuarios.detalle', compact('usuario'));
     }
 
     public function formularioUsuario()
@@ -37,24 +40,14 @@ class UsuarioController extends Controller
     {
         $this->validate($request, [
             'id_tipo_usuario' => 'required',
-            'nombre_usuario' => 'required',
-            'email' => 'required | email | unique:usuarios',
-            'pass' => 'required',
-        ]);
-
-        $request->validate([
+            'name' => 'required',
             'email' => 'required | email | unique:users',
-        ]);
-
-        Usuarios::create(array(
-            'id_tipo_usuario' => $request->input('id_tipo_usuario'),
-            'nombre_usuario' => $request->input('nombre_usuario'),
-            'email' => $request->input('email'),
-            'pass' => $request->input('pass'),
-        ));
+            'pass' => 'required',
+        ]);        
 
         $user = new User();
-        $user->name = $request->nombre_usuario;
+        $user->name = $request->name;
+        $user->id_tipo_usuario = $request->id_tipo_usuario;
         $user->email = $request->email;
         $user->password = Hash::make($request->pass);
         $user->save();
@@ -65,26 +58,28 @@ class UsuarioController extends Controller
 
     public function editarUsuario($id)
     {
-        $usuarios = \DB::select('SELECT * FROM usuarios 
-                                INNER JOIN tipo_usuario ON usuarios.id_tipo_usuario = tipo_usuario.id_tipo_usuario
-                                WHERE usuarios.id_usuario = ?', [$id]);
+        $usuario = User::join('tipo_usuario', 'users.id_tipo_usuario', '=', 'tipo_usuario.id_tipo_usuario')
+            ->where('users.id', $id)
+            ->first();
+
         $tipo_usuarios = Tipo_Usuario::all();
-        return view('usuarios.editar', compact('usuarios', 'tipo_usuarios'));
+
+        return view('usuarios.editar', compact('usuario', 'tipo_usuarios'));
     }
 
-    public function actualizarUsuario(Usuarios $id, Request $request)
+    public function actualizarUsuario(User $id, Request $request)
     {
-        $query = Usuarios::find($id->id_usuario);
-            $query -> id_tipo_usuario = $request -> id_tipo_usuario;
-            $query -> nombre_usuario = $request -> nombre_usuario;
-            $query -> email = $request -> email;
-            $query -> pass = $request -> pass;
-        $query -> save();
+        $query = User::find($id->id);
+        $query->id_tipo_usuario = $request->id_tipo_usuario;
+        $query->name = $request->name;
+        $query->email = $request->email;
+        $query->pass = $request->pass;
+        $query->save();
 
-        return redirect()->route("mostrarUsuario", ['id' => $id->id_usuario]);
+        return redirect()->route("mostrarUsuario", ['id' => $id->id]);
     }
 
-    public function eliminarUsuario(Usuarios $id)
+    public function eliminarUsuario(User $id)
     {
         $id->delete();
         return redirect()->route('listaUsuarios');

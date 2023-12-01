@@ -18,18 +18,6 @@ class LoginController extends Controller
             'pass' => 'required'
         ]);
 
-        $request->validate([
-            'email' => 'required | email | unique:usuarios',
-        ]);
-
-
-        $usuario = new Usuarios();
-        $usuario->id_tipo_usuario = 3;
-        $usuario->nombre_usuario = $request->nombre_usuario;
-        $usuario->email = $request->email;
-        $usuario->pass = $request->pass;
-        $usuario->save();
-
         $user = new User();
         $user->name = $request->nombre_usuario;
         $user->email = $request->email;
@@ -69,6 +57,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect((route('login')));
+        return redirect((route('index')));
     }
 }

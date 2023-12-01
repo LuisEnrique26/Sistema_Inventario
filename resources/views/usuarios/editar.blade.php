@@ -17,15 +17,17 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title"></h5>
-            <!-- Floating Labels Form -->
-            @foreach ($usuarios as $usuario)
-            <form class="row g-3" action="{{ route('actualizarUsuario', ['id' => $usuario->id_usuario]) }}" method="POST">
+
+
+            <form class="row g-3" action="{{ route('actualizarUsuario', ['id' => $usuario->id]) }}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="Tipo de Usuario" name="id_tipo_usuario" required>
-                            <option selected value="{{ $usuario->id_tipo_usuario }}">{{ $usuario->nombre_tipo_usuario }}</option>
+                        <select class="form-select" id="floatingSelect" aria-label="Tipo de Usuario" name="id_tipo_usuario"
+                            required>
+                            <option selected value="{{ $usuario->id_tipo_usuario }}">{{ $usuario->nombre_tipo_usuario }}
+                            </option>
                             @foreach ($tipo_usuarios as $tipo)
                                 <option value="{{ $tipo->id_tipo_usuario }}">{{ $tipo->nombre_tipo_usuario }}</option>
                             @endforeach
@@ -35,29 +37,32 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingName" placeholder="Nombre" name="nombre_usuario" value="{{ $usuario->nombre_usuario }}" required>
+                        <input type="text" class="form-control" id="floatingName" placeholder="Nombre" name="name"
+                            value="{{ $usuario->name }}" required>
                         <label for="floatingName">Nombre</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="email" class="form-control" id="floatingEmail" placeholder="Correo" name="email" value="{{ $usuario->email }}" required>
+                        <input type="email" class="form-control" id="floatingEmail" placeholder="Correo" name="email"
+                            value="{{ $usuario->email }}" required>
                         <label for="floatingEmail">Correo</label>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña" name="pass" value="{{ $usuario->pass }}" required>
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña"
+                            name="pass" value="{{ $usuario->pass }}" required>
                         <label for="floatingPassword">Contraseña</label>
                     </div>
                 </div>
-                @endforeach
+
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Guardar</button>
                     <button type="reset" class="btn btn-secondary">Limpiar</button>
                     <a href="{{ url()->previous() }}" type="button" class="btn btn-warning">Cancelar</a>
                 </div>
-            </form><!-- End floating Labels Form -->
+            </form>
 
         </div>
     </div>

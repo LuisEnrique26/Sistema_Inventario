@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item active">Detalle de Usuario</li>
             </ol>
         </nav>
-    </div><!-- End Page Title -->
+    </div>
 
     <section class="section">
         <div class="row">
@@ -24,35 +24,31 @@
                             <a type="button" class="btn btn-primary" href="{{ route('formularioUsuario') }}">Agregar Usuario</a>
                         </div>
 
-                        <!-- Table with stripped rows -->
+                        
                         <table class="table datatable">
                             <thead>
                                 <tr>
                                     <th scope="col">N°</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Contraseña</th>
                                     <th scope="col">Tipo de Usuario</th>
                                     <th scope="col">Funciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    @foreach ($usuarios as $usuario)
-                                        <th scope="row">{{ $usuario->id_usuario }}</th>
-                                        <td>{{ $usuario->nombre_usuario }}</td>
+                                        <th scope="row">{{ $usuario->id }}</th>
+                                        <td>{{ $usuario->name }}</td>
                                         <td>{{ $usuario->email }}</td>
-                                        <td>{{ $usuario->pass }}</td>
                                         <td>{{ $usuario->nombre_tipo_usuario }}</td>
                                         <td>
-                                            <a href="{{ route('editarUsuario', ['id' => $usuario->id_usuario]) }}"><button
+                                            <a href="{{ route('editarUsuario', ['id' => $usuario->id]) }}"><button
                                                 class="btn btn-warning">Editar</button></a>&nbsp;
                                         </td>
-                                    @endforeach
                                 </tr>
                             </tbody>
                         </table>
-                        <!-- End Table with stripped rows -->
+                        
                         <a href="{{ route('listaUsuarios') }}" class="btn btn-secondary rounded-pill" type="button">Ir a lista</a>
                     </div>
                 </div>
