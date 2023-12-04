@@ -21,10 +21,7 @@
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
                         <select class="form-select" id="floatingSelect" aria-label="Usuario" name="id_usuario" required>
-                            <option selected disabled>Elige...</option>
-                            @foreach ($usuarios as $usuario)
-                                <option value="{{ $usuario->id_usuario }}">{{ $usuario->nombre_usuario }}</option>
-                            @endforeach
+                            <option value="@auth {{ Auth::user()->id }} @endauth" selected>@auth {{ Auth::user()->name }} @endauth </option>
                         </select>
                         <label for="floatingSelect">Usuario</label>
                     </div>

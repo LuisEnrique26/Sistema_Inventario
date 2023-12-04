@@ -40,10 +40,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($venta_detalle as $ventaD)
+                                @foreach ($ventaDetalle as $ventaD)
                                     <tr>
                                         <th scope="row">{{ $ventaD->id_venta_detalle }}</th>
-                                        <td>{{ $ventaD->nombre_usuario }}</td>
+                                        <td>{{ $ventaD->name }}</td>
                                         <td>{{ $ventaD->fecha_venta }}</td>
                                         <td>{{ $ventaD->hora_venta }}</td>
                                         <td>{{ $ventaD->nombre_producto }}</td>

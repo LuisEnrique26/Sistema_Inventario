@@ -80,7 +80,7 @@
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Vender</button>
                     <button type="reset" class="btn btn-secondary">Limpiar</button>
-                    <a href="{{ url()->previous() }}" type="button" class="btn btn-warning">Cancelar</a>
+                    <a href="{{ route('listaVentas') }}" type="button" class="btn btn-warning">Cancelar</a>
                 </div>
             </form>
 

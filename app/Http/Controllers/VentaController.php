@@ -14,11 +14,13 @@ class VentaController extends Controller
   public function listaVentas()
   {
     $venta_detalle = DB::table('venta_detalle')
-      ->join('venta', 'venta_detalle.id_venta', '=', 'venta.id_venta')
-      ->join('productos', 'venta_detalle.id_producto', '=', 'productos.id_producto')
-      ->join('users', 'venta.id_empleado', '=', 'users.id')
-      ->select('venta_detalle.*', 'venta.*', 'productos.*', 'users.*')
-      ->get();
+    ->join('venta', 'venta_detalle.id_venta', '=', 'venta.id_venta')
+    ->join('productos', 'venta_detalle.id_producto', '=', 'productos.id_producto')
+    ->join('users', 'venta.id_empleado', '=', 'users.id')
+    ->select('venta_detalle.*', 'venta.*', 'productos.*', 'users.*')
+    ->orderBy('venta_detalle.id_venta_detalle', 'desc')
+    ->get();
+
 
 
     return view('ventas.lista', compact('venta_detalle'));
@@ -27,16 +29,16 @@ class VentaController extends Controller
   public function mostrarVenta($id)
   {
 
-    $venta_detalle = DB::table('venta_detalle')
+    $ventaDetalle = DB::table('venta_detalle')
       ->join('venta', 'venta_detalle.id_venta', '=', 'venta.id_venta')
       ->join('productos', 'venta_detalle.id_producto', '=', 'productos.id_producto')
-      ->join('usuarios', 'venta.id_empleado', '=', 'usuarios.id_usuario')
+      ->join('users', 'venta.id_empleado', '=', 'users.id')
       ->where('venta_detalle.id_venta_detalle', $id)
-      ->select('venta_detalle.*', 'venta.*', 'productos.*', 'usuarios.*')
+      ->select('venta_detalle.*', 'venta.*', 'productos.*', 'users.*')
       ->get();
 
 
-    return view('ventas.detalle', compact('venta_detalle'));
+    return view('ventas.detalle', compact('ventaDetalle'));
   }
 
   public function formularioVenta()
@@ -70,10 +72,8 @@ class VentaController extends Controller
 
     $query = Productos::find($id_producto);
     $query->stock_producto -= $request->cantidad_venta_detalle;
-    $cant = $query->stock_producto -= $request->cantidad_venta_detalle;
 
-    if ($cant >= 0) {
-      $query->stock_producto += $request->cantidad_venta_detalle;
+    if ($query->stock_producto >= 0) {
       $query->save();
 
 
@@ -93,9 +93,23 @@ class VentaController extends Controller
         'cantidad_venta_detalle' => $request->input('cantidad_venta_detalle')
       ));
 
+      if($query->stock_producto <= 5) {
+
+        $nombreP = $query->nombre_producto;
+        $stockP = $query->stock_producto;
+        $mensaje = "Stock bajo del producto '$nombreP' (Cantidad: $stockP), revise su inventario.";
+        return redirect(route('listaVentas'))->with('status', $mensaje);  
+
+      } else {
+
       return redirect()->route('listaVentas');
+
+      }
+
     } else {
+
       return redirect(route('formularioVenta'))->with('status', 'No hay suficientes productos');
+
     }
   }
 

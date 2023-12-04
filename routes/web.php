@@ -87,7 +87,7 @@ Route::name('formProductos')->get('/formProductos',[EntradaController::class,'fo
 
 
 /*-------------------------------------------------Login-------------------------------------------------*/
-Route::view('/', "auth.login")->name('login');
+Route::view('/login', "auth.login")->name('login');
 
 Route::view('/registro', "auth.registro")->name('registro');
 
@@ -99,4 +99,4 @@ Route::post('/inicia_sesion', [LoginController::class, 'login'])->name('inicia_s
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::view('/index', "index")->name('index');
+Route::view('/', "index")->name('index');
