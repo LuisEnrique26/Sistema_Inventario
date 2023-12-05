@@ -45,9 +45,11 @@ class UsuarioController extends Controller
             'pass' => 'required',
         ]);        
 
+        $id_tipo_usuario = 3;
+
         $user = new User();
+        $user->id_tipo_usuario = $id_tipo_usuario;
         $user->name = $request->name;
-        $user->id_tipo_usuario = $request->id_tipo_usuario;
         $user->email = $request->email;
         $user->password = Hash::make($request->pass);
         $user->save();
