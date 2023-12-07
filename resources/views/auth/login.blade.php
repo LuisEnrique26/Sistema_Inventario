@@ -100,6 +100,7 @@
                                             <p class="small mb-0">No tienes cuenta? <a
                                                     href="{{ route('registro') }}">Crear cuenta</a></p>
                                         </div>
+                                        <a href="{{ route('index') }}" type="button" class="btn btn-secondary">Regresar</a>
                                     </form>
 
                                 </div>

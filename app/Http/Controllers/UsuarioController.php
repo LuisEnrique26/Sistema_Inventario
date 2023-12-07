@@ -16,7 +16,7 @@ class UsuarioController extends Controller
             ->orderBy('users.id')
             ->get();
 
-        return view('usuarios.lista', compact('usuarios'));
+        return view('sistemas.usuarios.lista', compact('usuarios'));
     }
 
     public function mostrarUsuario($id)
@@ -27,13 +27,13 @@ class UsuarioController extends Controller
             ->first();
 
 
-        return view('usuarios.detalle', compact('usuario'));
+        return view('sistemas.usuarios.detalle', compact('usuario'));
     }
 
     public function formularioUsuario()
     {
         $tipo_usuarios = Tipo_Usuario::all();
-        return view('usuarios.agregar', compact('tipo_usuarios'));
+        return view('sistemas.usuarios.agregar', compact('tipo_usuarios'));
     }
 
     public function guardarUsuario(Request $request)
@@ -66,17 +66,24 @@ class UsuarioController extends Controller
 
         $tipo_usuarios = Tipo_Usuario::all();
 
-        return view('usuarios.editar', compact('usuario', 'tipo_usuarios'));
+        return view('sistemas.usuarios.editar', compact('usuario', 'tipo_usuarios'));
     }
 
     public function actualizarUsuario(User $id, Request $request)
     {
-        $query = User::find($id->id);
-        $query->id_tipo_usuario = $request->id_tipo_usuario;
-        $query->name = $request->name;
-        $query->email = $request->email;
-        $query->pass = $request->pass;
-        $query->save();
+        $user = User::findOrFail($id->id);
+
+        $data = $request->only('id_tipo_usuario', 'name', 'email');
+
+        if(trim($request->pass) == '')
+        {
+            $data = $request->except('pass');
+        } else {
+            $data = $request->all();
+            $data['pass']=bcrypt($request->pass);
+        }
+
+        $user->update($data);
 
         return redirect()->route("mostrarUsuario", ['id' => $id->id]);
     }

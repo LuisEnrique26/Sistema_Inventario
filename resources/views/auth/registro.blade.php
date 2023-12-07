@@ -109,6 +109,7 @@
                                             <p class="small mb-0">Ya tienes cuenta? <a
                                                     href="{{ route('login') }}">Login</a></p>
                                         </div>
+                                        <a href="{{ route('index') }}" type="button" class="btn btn-secondary">Regresar</a>
                                     </form>
 
                                 </div>

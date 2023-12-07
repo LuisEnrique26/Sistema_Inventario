@@ -52,7 +52,7 @@
                 <div class="col-md-6">
                     <div class="form-floating">
                         <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña"
-                            name="pass" value="{{ $usuario->pass }}" required>
+                            name="pass">
                         <label for="floatingPassword">Contraseña</label>
                     </div>
                 </div>

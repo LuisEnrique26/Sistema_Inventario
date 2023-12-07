@@ -6,7 +6,7 @@ use App\Models\Productos;
 use App\Models\Proveedores;
 use Illuminate\Http\Request;
 
-class ProductoController extends Controller
+class DueñoProductoController extends Controller
 {
     public function listaProductos()
     {
@@ -15,7 +15,7 @@ class ProductoController extends Controller
             ->get();
 
 
-        return view('sistemas.productos.lista', compact('productos'));
+        return view('dueño.productos.lista', compact('productos'));
     }
 
     public function mostrarProducto($id)
@@ -26,13 +26,13 @@ class ProductoController extends Controller
             ->first();
 
 
-        return view('sistemas.productos.detalle', compact('productos'));
+        return view('dueño.productos.detalle', compact('productos'));
     }
 
     public function formularioProducto()
     {
         $proveedores = Proveedores::all();
-        return view('sistemas.productos.agregar', compact('proveedores'));
+        return view('dueño.productos.agregar', compact('proveedores'));
     }
 
     public function guardarProducto(Request $request)
@@ -53,7 +53,7 @@ class ProductoController extends Controller
             'precio_producto' => $request->input('precio_producto'),
         ));
 
-        return redirect()->route('listaProductos');
+        return redirect()->route('dueñolistaProductos');
     }
 
     public function editarProducto($id)
@@ -64,7 +64,7 @@ class ProductoController extends Controller
             ->get();
 
         $proveedores = Proveedores::all();
-        return view('sistemas.productos.editar', compact('productos', 'proveedores'));
+        return view('dueño.productos.editar', compact('productos', 'proveedores'));
     }
 
     public function actualizarProducto(Productos $id, Request $request)
@@ -77,12 +77,12 @@ class ProductoController extends Controller
         $query->precio_producto = $request->precio_producto;
         $query->save();
 
-        return redirect()->route("mostrarProducto", ['id' => $id->id_producto]);
+        return redirect()->route("dueñomostrarProducto", ['id' => $id->id_producto]);
     }
 
     public function eliminarProducto(Productos $id)
     {
         $id->delete();
-        return redirect()->route('listaProductos');
+        return redirect()->route('dueñolistaProductos');
     }
 }

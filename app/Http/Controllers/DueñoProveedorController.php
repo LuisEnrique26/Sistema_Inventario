@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Proveedores;
 use Illuminate\Http\Request;
 
-class ProveedorController extends Controller
+class DueñoProveedorController extends Controller
 {
     public function listaProveedores()
     {
         $proveedores = Proveedores::all();
         
-        return view('sistemas.proveedores.lista', compact('proveedores'));
+        return view('dueño.proveedores.lista', compact('proveedores'));
     }
 
     public function formularioProveedor()
     {
-        return view('sistemas.proveedores.agregar');
+        return view('dueño.proveedores.agregar');
     }
 
     public function guardarProveedor(Request $request)
@@ -33,13 +33,13 @@ class ProveedorController extends Controller
             'telefono_proveedor' => $request->input('telefono_proveedor')
         ));
 
-        return redirect()->route('listaProveedores');
+        return redirect()->route('dueñolistaProveedores');
     }
 
     public function editarProveedor($id)
     {
         $proveedor = Proveedores::find($id);
-        return view('sistemas.proveedores.editar', compact('proveedor'));
+        return view('dueño.proveedores.editar', compact('proveedor'));
     }
 
     public function actualizarProveedor(Proveedores $id, Request $request)
@@ -50,12 +50,12 @@ class ProveedorController extends Controller
             $query -> telefono_proveedor = $request -> telefono_proveedor;
         $query -> save();
 
-        return redirect()->route("listaProveedores");
+        return redirect()->route("dueñolistaProveedores");
     }
 
     public function eliminarProveedor(Proveedores $id)
     {
         $id->delete();
-        return redirect()->route('listaProveedores');
+        return redirect()->route('dueñolistaProveedores');
     }
 }

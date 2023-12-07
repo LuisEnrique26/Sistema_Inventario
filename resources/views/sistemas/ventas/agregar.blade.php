@@ -35,17 +35,6 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="Cliente" name="id_cliente" required>
-                            <option selected value="">Elige...</option>
-                            @foreach ($clientes as $cliente)
-                                <option value="{{ $cliente->id_usuario }}">{{ $cliente->nombre_usuario }}</option>
-                            @endforeach
-                        </select>
-                        <label for="floatingSelect">Cliente</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating mb-3">
                         <select class="form-select" id="floatingSelectProducto" aria-label="Producto" name="id_producto"
                             required>
                             <option selected value="">Elige...</option>

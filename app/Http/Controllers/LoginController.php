@@ -17,7 +17,7 @@ class LoginController extends Controller
             'pass' => 'required'
         ]);
 
-        $id_tipo_usuario = 3;
+        $id_tipo_usuario = 1;
 
         $user = new User();
         $user->id_tipo_usuario = $id_tipo_usuario;
@@ -44,7 +44,18 @@ class LoginController extends Controller
         {
             $request->session()->regenerate();
 
-            return redirect(route('inicio'));
+            if(Auth::check()) {
+                $userId = Auth::user()->id_tipo_usuario;
+
+                if($userId == 1){
+                    return redirect(route('inicio'));
+                } else if($userId == 2){
+                    return redirect(route('inicio_dueño'));
+                } else if($userId == 3){
+                    return redirect(route('inicio_empleado'));
+                }
+            }
+            
         }
         else
         {

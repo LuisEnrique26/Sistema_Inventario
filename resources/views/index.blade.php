@@ -39,7 +39,6 @@
                 <img src="3" alt="">
                 <span class="d-none d-lg-block">Sistema de Gestión de Inventarios</span>
             </a>
-            <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>
 
 
@@ -92,57 +91,126 @@
 
         <section class="section dashboard">
             <div class="container">
-                <div class="row">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Gestión de tus productos</h5>
-                            <p>Administra entradas y salidas de tus productos.</p>
+                <div class="row my-5">
 
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Administra tus productos</h5>
 
-                            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="{{ asset('img/higienicos.jpg') }}" class="d-block w-100"
-                                            alt="..." height="500px" width="300px">
+                                <!-- Slides with captions -->
+                                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#carouselExampleCaptions"
+                                            data-bs-slide-to="0" class="active" aria-current="true"
+                                            aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselExampleCaptions"
+                                            data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                        <button type="button" data-bs-target="#carouselExampleCaptions"
+                                            data-bs-slide-to="2" aria-label="Slide 3"></button>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="{{ asset('img/product-1.jpg') }}" class="d-block w-100"
-                                            alt="..." height="650px" width="300px">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="{{ asset('img/estantes.jpg') }}" class="d-block w-100" alt="...">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5></h5>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{ asset('img/panygalletas.jpg') }}" class="d-block w-100" alt="...">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5></h5>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{ asset('img/card.jpg') }}" class="d-block w-100" alt="...">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5></h5>
+                                                <p></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="{{ asset('img/product-2.jpg') }}" class="d-block w-100"
-                                            alt="..." height="650px">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{{ asset('img/product-3.jpg') }}" class="d-block w-100"
-                                            alt="..." height="650px">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{{ asset('img/product-4.jpg') }}" class="d-block w-100"
-                                            alt="..." height="650px">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{{ asset('img/product-5.jpg') }}" class="d-block w-100"
-                                            alt="..." height="650px">
-                                    </div>
-                                </div>
 
-                                <button class="carousel-control-prev" type="button"
-                                    data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Anterior</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                    data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Siguiente</span>
-                                </button>
+                                    <button class="carousel-control-prev" type="button"
+                                        data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button"
+                                        data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+
+                                </div><!-- End Slides with captions -->
 
                             </div>
                         </div>
+
                     </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Controla tus entradas y salidas</h5>
+
+                                <!-- Slides with captions -->
+                                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#carouselExampleCaptions"
+                                            data-bs-slide-to="0" class="active" aria-current="true"
+                                            aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselExampleCaptions"
+                                            data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                        <button type="button" data-bs-target="#carouselExampleCaptions"
+                                            data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="{{ asset('img/dropshipper.jpg') }}" class="d-block w-100" alt="...">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5></h5>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{ asset('img/fabrica.jpg') }}" class="d-block w-100" alt="...">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5></h5>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{ asset('img/proveedores.jpg') }}" class="d-block w-100" alt="...">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5></h5>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button class="carousel-control-prev" type="button"
+                                        data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button"
+                                        data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+
+                                </div><!-- End Slides with captions -->
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
                 </div>
-            </div>
         </section>
     </div>
 

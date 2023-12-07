@@ -35,7 +35,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="{{ route('inicio') }}" class="logo d-flex align-items-center">
+            <a href="{{ route('inicio_dueño') }}" class="logo d-flex align-items-center">
                 <img src="{{ asset('img/logotipo_empresa.png') }}" alt="">
                 <span class="d-none d-lg-block">Sistema de Gestión de Inventarios</span>
             </a>
@@ -91,7 +91,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="{{ route('inicio') }}">
+                <a class="nav-link " href="{{ route('inicio_dueño') }}">
                     <i class="bi bi-grid"></i>
                     <span>Inicio</span>
                 </a>
@@ -104,17 +104,17 @@
                 </a>
                 <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="{{ route('listaProductos') }}">
+                        <a href="{{ route('dueñolistaProductos') }}">
                             <i class="bi bi-circle"></i><span>Productos</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('listaProveedores') }}">
+                        <a href="{{ route('dueñolistaProveedores') }}">
                             <i class="bi bi-circle"></i><span>Proveedores</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('listaEntradas') }}">
+                        <a href="{{ route('dueñolistaEntradas') }}">
                             <i class="bi bi-circle"></i><span>Entradas</span>
                         </a>
                     </li>
@@ -127,26 +127,13 @@
                 </a>
                 <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="{{ route('formularioVenta') }}">
+                        <a href="{{ route('dueñoformularioVenta') }}">
                             <i class="bi bi-circle"></i><span>Generar Venta</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('listaVentas') }}">
+                        <a href="{{ route('dueñolistaVentas') }}">
                             <i class="bi bi-circle"></i><span>Tabla de Ventas</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-person"></i><span>Usuarios</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ route('listaUsuarios') }}">
-                            <i class="bi bi-circle"></i><span>Lista de Usuarios</span>
                         </a>
                     </li>
                 </ul>

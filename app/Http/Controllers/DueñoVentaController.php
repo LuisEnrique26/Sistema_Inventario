@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
-class VentaController extends Controller
+class DueñoVentaController extends Controller
 {
     public function listaVentas()
     {
@@ -23,7 +23,7 @@ class VentaController extends Controller
 
 
 
-        return view('sistemas.ventas.lista', compact('venta_detalle'));
+        return view('dueño.ventas.lista', compact('venta_detalle'));
     }
 
     public function mostrarVenta($id)
@@ -38,7 +38,7 @@ class VentaController extends Controller
             ->get();
 
 
-        return view('sistemas.ventas.detalle', compact('ventaDetalle'));
+        return view('dueño.ventas.detalle', compact('ventaDetalle'));
     }
 
     public function formularioVenta()
@@ -49,7 +49,11 @@ class VentaController extends Controller
             ->where('id_tipo_usuario', 3)
             ->get();
 
-        return view('sistemas.ventas.agregar', compact('productos', 'empleados'));
+        $clientes = DB::table('usuarios')
+            ->where('id_tipo_usuario', 4)
+            ->get();
+
+        return view('dueño.ventas.agregar', compact('productos', 'empleados', 'clientes'));
     }
 
     public function guardarVenta(Request $request)
@@ -99,7 +103,7 @@ class VentaController extends Controller
             }
         } else {
 
-            return redirect(route('formularioVenta'))->with('status', 'No hay suficientes productos');
+            return redirect(route('dueñoformularioVenta'))->with('status', 'No hay suficientes productos');
         }
     }
 
@@ -107,7 +111,7 @@ class VentaController extends Controller
     {
         $id->delete();
         $idV->delete();
-        return redirect()->route('listaVentas');
+        return redirect()->route('dueñolistaVentas');
     }
 
     public function form_Precio_Producto(Request $request)
@@ -115,6 +119,6 @@ class VentaController extends Controller
         $id_producto = $request->get('id_producto');
         $productos = Productos::find($id_producto);
 
-        return view('sistemas.ventas.form_precio_producto', compact('productos'));
+        return view('dueño.ventas.form_precio_producto', compact('productos'));
     }
 }

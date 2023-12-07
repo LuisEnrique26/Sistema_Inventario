@@ -8,7 +8,7 @@ use App\Models\Proveedores;
 use App\Models\Usuarios;
 use Illuminate\Http\Request;
 
-class EntradaController extends Controller
+class DueñoEntradaController extends Controller
 {
     public function listaEntradas()
     {
@@ -20,7 +20,7 @@ class EntradaController extends Controller
             ->get();
 
 
-        return view('sistemas.entradas.lista', compact('entradas'));
+        return view('dueño.entradas.lista', compact('entradas'));
     }
 
     public function mostrarEntrada($id)
@@ -33,7 +33,7 @@ class EntradaController extends Controller
             ->get();
 
 
-        return view('sistemas.entradas.detalle', compact('entradas'));
+        return view('dueño.entradas.detalle', compact('entradas'));
     }
 
     public function formularioEntrada()
@@ -42,7 +42,7 @@ class EntradaController extends Controller
         $usuarios = Usuarios::whereNotIn('id_tipo_usuario', [4])->get();
 
 
-        return view('sistemas.entradas.agregar', compact('proveedores', 'usuarios'));
+        return view('dueño.entradas.agregar', compact('proveedores', 'usuarios'));
     }
 
     public function guardarEntrada(Request $request)
@@ -73,7 +73,7 @@ class EntradaController extends Controller
 
 
 
-        return redirect()->route('listaEntradas');
+        return redirect()->route('dueñolistaEntradas');
     }
 
     public function editarEntrada($id)
@@ -89,7 +89,7 @@ class EntradaController extends Controller
         $proveedores = Proveedores::all();
         $usuarios = Usuarios::whereNotIn('id_tipo_usuario', [4])->get();
 
-        return view('sistemas.entradas.editar', compact('proveedores', 'usuarios', 'entradas'));
+        return view('dueño.entradas.editar', compact('proveedores', 'usuarios', 'entradas'));
     }
 
     public function actualizarEntrada(Producto_Proveedor $id, Request $request)
@@ -106,13 +106,13 @@ class EntradaController extends Controller
         $query->cantidad = $request->cantidad;
         $query->save();
 
-        return redirect()->route("mostrarEntrada", ['id' => $id->id_producto_proveedor]);
+        return redirect()->route("dueñomostrarEntrada", ['id' => $id->id_producto_proveedor]);
     }
 
     public function eliminarEntrada(Producto_Proveedor $id)
     {
         $id->delete();
-        return redirect()->route('listaEntradas');
+        return redirect()->route('dueñolistaEntradas');
     }
 
     public function formProductos(Request $request)
@@ -121,6 +121,6 @@ class EntradaController extends Controller
         $productos = Productos::where('id_proveedor', '=', $id_proveedor)->get();
 
 
-        return view('sistemas.entradas.productos', compact('productos'));
+        return view('dueño.entradas.productos', compact('productos'));
     }
 }
