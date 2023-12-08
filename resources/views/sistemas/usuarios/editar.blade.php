@@ -53,7 +53,7 @@
                     <div class="form-floating">
                         <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña"
                             name="pass">
-                        <label for="floatingPassword">Contraseña</label>
+                        <label for="floatingPassword">Ingresa una contraseña sólo si la deseas actualizar</label>
                     </div>
                 </div>
 

@@ -34,21 +34,21 @@
                                 </div>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="{{ asset('img/estantes.jpg') }}" class="d-block w-100" alt="...">
+                                        <img src="https://i.pinimg.com/originals/97/52/e4/9752e455b0d5106f8c98eda2becdb9bb.jpg" class="d-block w-100" alt="...">
                                         <div class="carousel-caption d-none d-md-block">
                                             <h5></h5>
                                             <p></p>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="{{ asset('img/panygalletas.jpg') }}" class="d-block w-100" alt="...">
+                                        <img src="https://i.pinimg.com/originals/5f/44/c5/5f44c561565d46ef859380fd583c4ff7.jpg" class="d-block w-100" alt="...">
                                         <div class="carousel-caption d-none d-md-block">
                                             <h5></h5>
                                             <p></p>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="{{ asset('img/card.jpg') }}" class="d-block w-100" alt="...">
+                                        <img src="https://i.pinimg.com/originals/a2/57/bc/a257bcc7e1fe76649128c51d6f557f80.jpg" class="d-block w-100" alt="...">
                                         <div class="carousel-caption d-none d-md-block">
                                             <h5></h5>
                                             <p></p>
@@ -92,21 +92,21 @@
                                 </div>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="{{ asset('img/dropshipper.jpg') }}" class="d-block w-100" alt="...">
+                                        <img src="https://i.pinimg.com/originals/1b/c2/52/1bc252d547e489702df3690a3b447103.png" class="d-block w-100" alt="...">
                                         <div class="carousel-caption d-none d-md-block">
                                             <h5></h5>
                                             <p></p>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="{{ asset('img/fabrica.jpg') }}" class="d-block w-100" alt="...">
+                                        <img src="https://img.freepik.com/foto-gratis/ventas-cyber-monday-shopping_23-2148688502.jpg" class="d-block w-100" alt="...">
                                         <div class="carousel-caption d-none d-md-block">
                                             <h5></h5>
                                             <p></p>
                                         </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="{{ asset('img/proveedores.jpg') }}" class="d-block w-100" alt="...">
+                                        <img src="https://png.pngtree.com/png-clipart/20200224/original/pngtree-concept-of-e-commerce-sales-online-shopping-digital-marketing-vector-illustration-png-image_5232949.jpg" class="d-block w-100" alt="...">
                                         <div class="carousel-caption d-none d-md-block">
                                             <h5></h5>
                                             <p></p>
